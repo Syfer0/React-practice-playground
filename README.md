@@ -6,7 +6,7 @@ Welcome to the React Practice Playground! This repository is designed for honing
 
 . **Clone the Repository:**
    ```bash
-   git clone https://github.com/Syfer0/react-practice-playground.git
+   https://github.com/Syfer0/React-practice-playground.git
    ```
 
 . **Start Practicing:**
