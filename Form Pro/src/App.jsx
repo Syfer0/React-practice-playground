@@ -12,18 +12,34 @@ function App() {
   function handleChanges(e) {
     const value = e.target.value;
     setCardNumber(value);
-    setCvv(value);
-    setExpiry(value);
   }
   // You can use separate functions or one shared function
 
+  function handleCvvChanges(e){
+    const value = e.target.value;
+
+
+    if (value.length <=3  ){
+      setCvv(value)
+    }
+  }
+  const handleExpiryChange = (e) => {
+    setExpiry(e.target.value);
+  };
   // 3. CARD TYPE LOGIC:
   // Check the first digit of cardNumber.
   // Returns "Visa", "Mastercard", or ""
   const getCardType = () => {
-    // Write logic here...
-  };
+   const firstDigit = cardNumber[0];
 
+   if (firstDigit === "4") {
+    return "Visa";
+   }else if( firstDigit === "5"){
+    return "Mastercard"
+   }else{
+    return "";
+   }
+  }
   return (
     <div
       style={{ padding: "40px", textAlign: "center", fontFamily: "sans-serif" }}
@@ -50,7 +66,7 @@ function App() {
           />
           {/* LOGIC: Show Card Type Here (e.g. "Unknown", "Visa", "MasterCard") */}
           <small style={{ color: "blue", fontWeight: "bold" }}>
-            Card Type: {/* Call your function or variable here */}
+            Card Type: {getCardType()}
           </small>
         </div>
 
@@ -62,7 +78,7 @@ function App() {
               type="text"
               placeholder="MM/YY"
               style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-              // Add value and onChange here
+              onChange={handleExpiryChange}
             />
           </div>
 
@@ -74,7 +90,7 @@ function App() {
               placeholder="123"
               maxLength={3}
               style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-              // Add value and onChange here
+              onChange={handleCvvChanges}
             />
           </div>
         </div>
@@ -94,5 +110,5 @@ function App() {
     </div>
   );
 }
-
 export default App;
+
