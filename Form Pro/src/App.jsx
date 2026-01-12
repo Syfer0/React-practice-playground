@@ -4,8 +4,17 @@ import "./App.css";
 function App() {
   // 1. CREATE STATE: We need state for number, expiry, and cvv
   // const [cardNumber, setCardNumber] = ...
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCvv] = useState("");
 
   // 2. HANDLE CHANGE: Update state when user types
+  function handleChanges(e) {
+    const value = e.target.value;
+    setCardNumber(value);
+    setCvv(value);
+    setExpiry(value);
+  }
   // You can use separate functions or one shared function
 
   // 3. CARD TYPE LOGIC:
@@ -37,7 +46,7 @@ function App() {
             type="text"
             placeholder="1234 5678 9101 1121"
             style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-            // Add value and onChange here
+            onChange={handleChanges}
           />
           {/* LOGIC: Show Card Type Here (e.g. "Unknown", "Visa", "MasterCard") */}
           <small style={{ color: "blue", fontWeight: "bold" }}>
